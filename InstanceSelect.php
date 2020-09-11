@@ -137,8 +137,11 @@ $(document).ready(function() {
         } else {
             // Make a select list with the appropriate options
             replaceField.append($("<option>"));
+            // pick up parent instance from URL, possibly set by companion EM InstanceTable
+            var parent_instance = <?php echo $_GET['parent_instance']?>;
+
             for (var optVal in taggedField.lookup) {
-                if (optVal===taggedField.currentValue) {
+                if (optVal===taggedField.currentValue || optVal===parent_instance.toString()) {
                     replaceField.append($("<option>").attr('value',optVal).text(taggedField.lookup[optVal]).prop('selected', true));
                 } else {
                     replaceField.append($("<option>").attr('value',optVal).text(taggedField.lookup[optVal]));
