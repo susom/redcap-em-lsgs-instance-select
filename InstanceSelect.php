@@ -130,7 +130,7 @@ $(document).ready(function() {
     // Loop through each field_name
     $(taggedFields).each(function(i, taggedField) {
         //console.log('i: ' + i); console.log(taggedField);
-        console.log(taggedField);
+
         var replaceField = $('<select name="'+taggedField.name+'" style="max-width:90%;">');
         if (taggedField.lookup.length===0) {
             // disable if nothing to select
