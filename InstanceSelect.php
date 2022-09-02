@@ -10,6 +10,7 @@
  * Records are not labelled in survey view in case custom label contains PHI
  */
 namespace MCRI\InstanceSelect;
+//require_once "emLoggerTrait.php";
 
 use ExternalModules\AbstractExternalModule;
 use Form;
@@ -18,9 +19,9 @@ use RCView;
 use Records;
 use REDCap;
 
-class InstanceSelect extends AbstractExternalModule
-{
-        protected static $Tags = array(
+class InstanceSelect extends AbstractExternalModule {
+    //use emLoggerTrait;
+    protected static $Tags = array(
             '@EVENTINSTANCE' =>
                 'Specify the unique event name of a repeating event and the select list will show instances of the specified event for the current record:<br>* @EVENTINSTANCE=myeventname_arm_n : Select an instance of myeventname_arm_n<br>If the event is not a repeating event then the action tag will be ignored and you will see only the unvalidated text field.'
             ,'@FORMINSTANCE' =>
@@ -119,8 +120,8 @@ class InstanceSelect extends AbstractExternalModule
         }
 
         protected function insertJS() {
-          $parent_instance = ($_GET['parent_instance'] == null
-            || empty($_GET['parent_instance'])) ? -1 : $_GET['parent_instance'];
+          $parent_instance = ($_GET['link_instance'] == null
+            || empty($_GET['link_instance'])) ? -1 : $_GET['link_instance'];
 ?>
 <script type='text/javascript'>
 $(document).ready(function() {
